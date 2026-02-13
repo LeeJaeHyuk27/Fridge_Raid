@@ -6,12 +6,9 @@ import lombok.*;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name = "RECIPES")
-public class Recipes {
+public class Recipe {
 
 	@Id
 	@Column(name = "RECIPE_ID")

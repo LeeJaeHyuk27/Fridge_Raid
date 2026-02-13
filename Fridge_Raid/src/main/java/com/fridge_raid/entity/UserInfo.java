@@ -6,12 +6,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name = "USER_INFO")
-public class User {
+public class UserInfo {
 
 	@Id
     @Column(name = "USER_ID", length = 50)
