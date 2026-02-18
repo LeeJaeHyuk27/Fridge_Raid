@@ -7,7 +7,7 @@ import lombok.*;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "RECIPES")
+@Table(name = "RECIPE")
 public class Recipe {
 
 	@Id
