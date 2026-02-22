@@ -14,7 +14,8 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 		        r.title,
 		        coalesce(round(avg(rv.rating), 1), 0.0),
 		        count(rv),
-		        coalesce(sum(rv.rating), 0L)
+		        coalesce(sum(rv.rating), 0L),
+		        r.thumbnail
 		    )
 		    from Recipe r
 		    left join Review rv on rv.recipe = r
