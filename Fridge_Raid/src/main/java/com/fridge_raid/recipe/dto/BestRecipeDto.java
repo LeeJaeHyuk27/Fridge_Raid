@@ -6,6 +6,7 @@ public record BestRecipeDto(
         String title,
         Double avgRating,
         Long reviewCount,
-        Long score
+        Long score,
+        String thumbnail
 	    
 		) {}
