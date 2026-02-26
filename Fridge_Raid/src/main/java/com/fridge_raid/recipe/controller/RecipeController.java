@@ -23,5 +23,4 @@ public class RecipeController {
         return recipeRepository.findBestRecipes(PageRequest.of(0, 5));
     }
 
-    
 }
