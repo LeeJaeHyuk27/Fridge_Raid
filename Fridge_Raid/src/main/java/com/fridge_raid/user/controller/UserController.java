@@ -1,42 +1,26 @@
 package com.fridge_raid.user.controller;
 
-import com.fridge_raid.entity.UserInfo;
-import com.fridge_raid.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import java.util.*;
+
+import com.fridge_raid.user.dto.JoinDto;
+import com.fridge_raid.user.service.JoinService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("/users")
-
+@RequestMapping("/api/user")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
-	
-	private final UserRepository userRepository;
 
-	@PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public String createUser(@RequestBody UserInfo user) {
+    private final JoinService joinService;
 
-        // PK 중복 체크
-        if (userRepository.existsById(user.getUserId())) {
-            throw new RuntimeException("이미 존재하는 USER_ID 입니다.");
-        }
-
-        // 서버에서 직접 세팅해야 할 값
-        //user.setJoinDate(LocalDateTime.now());
-
-        userRepository.save(user);
-
-        return "CREATED: " + user.getUserId();
+    public UserController(JoinService joinService) {
+        this.joinService = joinService;
     }
 
-    // ✅ 삭제 (DELETE /users/{userId})
-    @DeleteMapping("/{userId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable String userId) {
-        userRepository.deleteById(userId);
+    @PostMapping("/join")
+    public ResponseEntity<String> join(@RequestBody JoinDto joinDto) {
+        joinService.join(joinDto);
+        return ResponseEntity.ok("회원가입이 완료되었습니다.");
     }
-    
 }
