@@ -6,5 +6,4 @@ import com.fridge_raid.entity.UserInfo;
 
 public interface UserRepository extends JpaRepository<UserInfo, String>{
 	
-	
 }
