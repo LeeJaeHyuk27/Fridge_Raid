@@ -26,4 +26,12 @@ public class UserInfo {
     @Column(name = "JOIN_DATE", nullable = false)
     private LocalDateTime joinDate;
     
+    public UserInfo(String userId, String passwordHash, String userName) {
+        this.userId = userId;
+        this.passwordHash = passwordHash;
+        this.userName = userName;
+        this.adminLevel = 1;
+        this.joinDate = LocalDateTime.now();
+    }
+    
 }
