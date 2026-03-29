@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.fridge_raid.entity.UserInfo;
 
-public interface UserRepository extends JpaRepository<UserInfo, String>{
+public interface JoinRepository extends JpaRepository<UserInfo, String>{
 	
-	boolean existByUserId(String userId);
+	boolean existsByUserId(String userId);
 	
 }

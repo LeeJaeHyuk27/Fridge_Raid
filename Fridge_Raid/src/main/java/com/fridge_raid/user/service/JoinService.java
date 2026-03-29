@@ -2,18 +2,18 @@ package com.fridge_raid.user.service;
 
 import com.fridge_raid.entity.UserInfo;
 import com.fridge_raid.user.dto.JoinDto;
-import com.fridge_raid.user.repository.UserRepository;
+import com.fridge_raid.user.repository.JoinRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JoinService {
 
-    private final UserRepository UserRepository;
+    private final JoinRepository JoinRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public JoinService(UserRepository UserRepository, PasswordEncoder passwordEncoder) {
-        this.UserRepository = UserRepository;
+    public JoinService(JoinRepository JoinRepository, PasswordEncoder passwordEncoder) {
+        this.JoinRepository = JoinRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -31,7 +31,7 @@ public class JoinService {
             throw new IllegalArgumentException("이름을 입력해주세요.");
         }
 
-        if (UserRepository.existByUserId(joinDto.userId())) {
+        if (JoinRepository.existsByUserId(joinDto.userId())) {
             throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
         }
 
@@ -41,7 +41,7 @@ public class JoinService {
                 joinDto.userName()
         );
 
-        UserRepository.save(user);
+        JoinRepository.save(user);
     }
     
 }
