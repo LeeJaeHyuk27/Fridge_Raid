@@ -43,5 +43,4 @@ public class JoinService {
 
         JoinRepository.save(user);
     }
-    
 }
