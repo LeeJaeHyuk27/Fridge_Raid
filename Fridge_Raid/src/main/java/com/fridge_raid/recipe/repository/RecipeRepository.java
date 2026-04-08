@@ -24,4 +24,5 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 		""")
 	    List<BestRecipeDto> findBestRecipes(Pageable pageable);
 
+	
 }
