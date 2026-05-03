@@ -28,7 +28,7 @@ public class JoinService {
         }
 
         if (joinDto.userName() == null || joinDto.userName().trim().isEmpty()) {
-            throw new IllegalArgumentException("이름을 입력해주세요.");
+            throw new IllegalArgumentException("닉네임을 입력해주세요.");
         }
 
         if (JoinRepository.existsByUserId(joinDto.userId())) {
