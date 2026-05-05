@@ -8,4 +8,6 @@ public interface JoinRepository extends JpaRepository<UserInfo, String>{
 	
 	boolean existsByUserId(String userId);
 	
+	boolean existsByUserName(String userName);
+	
 }

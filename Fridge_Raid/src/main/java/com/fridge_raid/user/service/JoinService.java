@@ -34,6 +34,10 @@ public class JoinService {
         if (JoinRepository.existsByUserId(joinDto.userId())) {
             throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
         }
+        
+        if (JoinRepository.existsByUserName(joinDto.userName())) {
+            throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
+        }
 
         UserInfo user = new UserInfo(
                 joinDto.userId(),
