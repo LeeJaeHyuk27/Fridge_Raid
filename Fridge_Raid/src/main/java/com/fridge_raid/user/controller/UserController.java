@@ -8,6 +8,7 @@ import com.fridge_raid.user.service.JoinService;
 import com.fridge_raid.user.service.LoginService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/user")
@@ -29,8 +30,8 @@ public class UserController {
     }
     
     @PostMapping("/login")
-    public String login(@RequestBody LoginDto loginDto) {
-        return loginService.login(loginDto);
+    public String login(@RequestBody LoginDto loginDto, HttpSession session) {
+        return loginService.login(loginDto, session);
     }
     
 }

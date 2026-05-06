@@ -5,6 +5,7 @@ import com.fridge_raid.user.dto.LoginDto;
 import com.fridge_raid.user.repository.LoginRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class LoginService {
@@ -17,7 +18,7 @@ public class LoginService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String login(LoginDto loginDto) {
+    public String login(LoginDto loginDto, HttpSession session) {
 
         if (loginDto.userId() == null || loginDto.userId().trim().isEmpty()) {
             throw new IllegalArgumentException("아이디를 입력해주세요.");
@@ -33,6 +34,7 @@ public class LoginService {
         if (!passwordEncoder.matches(loginDto.passwordHash(), user.getPasswordHash())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
+        session.setAttribute("loginUser", user);
 
         return "로그인 성공";
     }
