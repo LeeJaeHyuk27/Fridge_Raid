@@ -7,6 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import jakarta.servlet.http.HttpSession;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class LoginService {
 
@@ -34,8 +37,15 @@ public class LoginService {
         if (!passwordEncoder.matches(loginDto.passwordHash(), user.getPasswordHash())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
-        session.setAttribute("loginUser", user);
+        
+        Map<String, Object> loginUser = new HashMap<>();
+
+        loginUser.put("userId", user.getUserId());
+        loginUser.put("userName", user.getUserName());
+
+        session.setAttribute("loginUser", loginUser);
 
         return "로그인 성공";
     }
+    
 }
