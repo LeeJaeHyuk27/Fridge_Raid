@@ -46,6 +46,7 @@ public class LoginService {
         session.setAttribute("loginUser", loginUser);
 
         return "로그인 성공";
+        
     }
     
 }
