@@ -17,12 +17,12 @@ public class FridgeItem {
     @MapsId("userId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
-    private UserInfo user;
+    private UserInfo userId;
 
     @MapsId("ingredientId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "INGREDIENT_ID", nullable = false)
-    private Ingredient ingredient;
+    private Ingredient ingredientId;
 
     @Column(name = "CREATED_AT", nullable = false)
     private LocalDateTime createdAt;
