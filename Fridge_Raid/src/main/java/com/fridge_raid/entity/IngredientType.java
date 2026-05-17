@@ -16,10 +16,10 @@ public class IngredientType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ING_TYPE_ID")
-    private Long id;
+    private Long ingTypeId;
 
     @Column(name = "ING_TYPE_NAME", length = 50, nullable = false, unique = true)
-    private String name;
+    private String ingTypeName;
 
     @OneToMany(mappedBy = "type", fetch = FetchType.LAZY)
     private List<Ingredient> ingredients = new ArrayList<>();
